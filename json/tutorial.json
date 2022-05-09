@@ -1,0 +1,150 @@
+[
+	{
+		"id": "inicio",
+		"titulo": "Bienvenido al Tutorial",
+		"descripcion": "\nHola! Esto es una oficina de reparación y montaje de ordenadores. En este Tutorial aprenderás los controles, las mecánicas y los objetivos básicos del juego.\n\nSuerte y pásatelo bien!",
+		"boton": "Iniciar",
+		"onclick": "cargarInstruccion(1)"
+	},
+	{
+		"id": "controles",
+		"titulo": "Controles",
+		"descripcion": "\nMano derecha:\t  Agarrar y soltar componentes. \t\t\t\t\t\t\t\n\nMano izquierda:\tHacer click en botones (usando el gatillo). \t\t\nMano izquierda:\tDescolocar componentes (usando el gatillo).  \nMano izquierda:\tCentrar cámara (usando el botón X). \t  \t\t\t",
+		"boton": "Continuar",
+		"onclick": "cargarInstruccion(2)"
+	},
+	{
+		"id": "tareas",
+		"titulo": "Menú de tareas",
+		"descripcion": "El menú de tareas se encuentra a tu derecha.\n\nEste menú te indica los requisitos que se deben cumplir durante el proceso de montaje (al ser el tutorial son básicos). Estos requisitos incluyen tipos de pieza, compatibilidades, especificaciones...\n\nEste menú también indica el tiempo transurrido desde el inicio del nivel y te permite finalizar el nivel, o salir sin guardar.",
+		"boton": "Continuar",
+		"onclick": "cargarInstruccion(3)"
+	},
+	{
+		"id": "generar",
+		"titulo": "Generar Componentes",
+		"descripcion": "\nEn la parte izquierda de la mesa tienes la 'Zona de aparición'. Cuando generes un componente, éste aparecerá ahí.\n\nEl menú de la izquierda sirve para ver todos los componentes y sus especificaciones, y para generarlos. Para generar un componente simplemente pulsa sobre su tarjeta.\nAviso: Solo se pueden generar componentes duplicados en el caso de la RAM y los discos, los demás componentes se regenerarán de 0.\n\nGenera una Placa Base para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "placabase",
+		"titulo": "Placa Base",
+		"descripcion": "La Placa Base es una de las partes más fundamentales del ordenador porque todos los componentes se conectan a ella para poder funcionar.\nEs el componente más grande de todos ya que tiene multitud de circuitos impresos y ranuras para conectar gran variedad de dispositivos.\n También tiene un firmware propio (BIOS), que sirve para cargar el sistema operativo.",
+		"boton": "Continuar",
+		"onclick": "cargarInstruccion(5)"
+	},
+	{
+		"id": "agarrar",
+		"titulo": "Mecánica de agarrar",
+		"descripcion": "Para agarrar un componente usa tu mano derecha y pulsa el botón de agarrar (botón lateral del mando). Al tener un componente en la mano saldrán sus especificaciones en la zona de 'Componente actual'.\n\nRecuerda que si pierdes un componente (o no puedes agarrarlo porque está lejos) siempre puedes generarlo de nuevo, pero, al volver a generarse, se eliminará el anterior.\n\nAgarra la Placa Base para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "colocar",
+		"titulo": "Mecánica de colocar",
+		"descripcion": "Al tener un componente en la mano, saldrán las zonas de colocación disponibles en el ordenador, marcadas de color rojo semitransparente.\nPara colocar un componente en dichas zonas, acércalo a una de las zonas de colocación y suéltalo cuando la zona se resalte de color rojo.\n\n Intenta colocar la Placa Base en la zona de colocación del centro del ordenador para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "colocar2",
+		"titulo": "Mecánica de colocar 2",
+		"descripcion": "Hay muchos componentes que van conectados a la Placa Base. Por ello, una vez colocada la Placa Base, se crean nuevas zonas de colocación encima de ella (color amarillo).\n\nAVISO: Hay zonas de colocación muy pequeñas y finas. Asegúrate de que, si colocas un componente, éste no está tocando otras zonas de colocación una vez colocado, porque esto va a interferir con los próximos componentes que se coloquen.\n\nGenera una CPU y colocala en la zona de colocación central (sobre la Placa Base) para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "descolocar",
+		"titulo": "Mecánica de descolocar",
+		"descripcion": "Si en algún momento tienes que quitar o recolocar un componente ya colocado puedes usar tu mano izquierda (la que tiene el láser).\nSimplemente apunta al componente que quieras quitar (verás que se pone transparente) y pulsa el gatillo. El componente se moverá a la 'Zona de colocación'.\n\nTen en cuenta que si quitas un componente que tiene asociados otros componentes (por ejemplo, la Placa Base tiene la CPU encima), todos sus componentes asociados también se quitarán.\n\nDescoloca la Placa Base y la CPU para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "felicidades",
+		"titulo": "Perfecto!",
+		"descripcion": "Ahora ya sabes los controles y las mecánicas básicas del juego.\n\nLa parte final del tutorial te va a guiar durante el proceso de montaje del ordenador, explicándote para qué sirve cada componente.\n\nRecuerda que puedes salir en cualquier momento usando el menú de la derecha.",
+		"boton": "Continuar",
+		"onclick": "cargarInstruccion(10)"
+	},
+	{
+		"id": "placabase2",
+		"titulo": "Placa Base",
+		"descripcion": "A estas alturas ya sabes que una Placa Base es uno de los componentes principales, lleva múltiples componentes conectados a ella y es el primer componente que debe colocarse.\nTen en cuenta que cada Placa Base tiene distinto número de puertos para discos y RAM. También es muy importante saber el socket que lleva la Placa Base, porque tiene que coincidir con el de la CPU.\n\nSu lugar de colocación es en el centro del ordenador, en el sitio más amplio.\nGenera (si es necesario) y coloca una Placa Base en su lugar para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "cpu",
+		"titulo": "CPU",
+		"descripcion": "La CPU (o procesador) es considerada el 'cerebro' del ordenador porque se encarga de procesar todas las instrucciones del dispositivo. Cuanto más potente sea la CPU, más rápido irá el ordenador, puesto que puede calcular más operaciones por segundo.\nHay 2 arquitecturas principales, Intel y AMD, y ambas se rigen por su frecuencia y turbo (GHz). A más frecuencia, mejor rendimiento.\n\nSu lugar de colocación es sobre la Placa Base, justo en el centro.\nGenera y coloca una CPU en su lugar para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "ventilador",
+		"titulo": "Ventilador",
+		"descripcion": "El ventilador (o disipador) es un elemento que disipa el calor de la CPU, evitando sobrecalentamientos y mejorando su rendimiento. Para la instalación del ventilador se aplica pasta térmica encima de la CPU y, justo encima, se coloca el ventilador. En este caso la pasta térmica la obviaremos.\nLos ventiladores se guían por sus RPM ya que, a más velocidad, mayor calor disipan.\n\nSu lugar de colocación es justo encima del procesador (zona verde).\nGenera y coloca un ventilador en su lugar para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "ram",
+		"titulo": "RAM",
+		"descripcion": "La memoria RAM es una memoria de almacenamiento muy rápida que solo tiene utilidad a corto plazo. Al apagar el ordenador, el contenido de esta memoria desaparece por lo que no sirve para almacenar datos a largo plazo.\nCuanta más memoria RAM (expresada en GB), más aplicaciones se pueden gestionar a la vez y mayor fluidez tendrá el ordenador.\n\nSu lugar de colocación es sobre la Placa Base, en la esquina superior derecha, en cualquiera de los módulos.\nGenera y coloca un módulo de RAM en su lugar para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "hdd",
+		"titulo": "HDD",
+		"descripcion": "Los discos duros (HDD) no pierden su información al apagar el ordenador (como si ocurre con la RAM) y utilizan el magnetismo para grabar los datos y archivos. Su tamaño es superior al de la RAM y su velocidad es muy inferior, pero estos discos se caracterizan por su bajo precio. Son útiles para copias de seguridad, contenido pesado...\n\nSu lugar de colocación es en la parte derecha del ordenador, en cualquiera de los módulos destinados únicamente para discos HDD.\nGenera y coloca un disco HDD (fíjate bien que sea HDD y no SSD) en su lugar para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "ssd",
+		"titulo": "SSD",
+		"descripcion": "Los discos SSD (conector M.2) tampoco pierden la información al apagar el ordenador y son una alternativa a los HDD. La diferencia es que los SSD almacenan los archivos en microchips, por lo que la velocidad es mucho más rápida y el tamaño físico es menor. El problema es que suelen ser de menor capacidad y su precio és mas elevado. Son útiles para contenido que necesite accederse a menudo y de manera rápida.\n\nSu lugar de colocación es sobre la Placa Base, justo debajo de la CPU, en cualquiera de los módulos de discos SSD.\nGenera y coloca un disco SSD en su lugar para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "gpu",
+		"titulo": "GPU",
+		"descripcion": "La tarjeta gráfica (GPU) es un procesador destinado únicamente al procesamiento gráfico, liberando así a la CPU de dicha tarea. La CPU ya tiene una unidad de gráficos integrada, pero para determinadas aplicaciones (juegos o aplicaciones 3D) no es suficiente y por ello se recurre a la GPU. Las GPU se guían por su memoria y velocidad (a mayor memoria y velocidad, mejor rendimiento).\n\nSu lugar de colocación es sobre la Placa Base, en la ranura que hay en la zona más inferior (es algo mas gruesa que las demás).\nGenera y coloca una GPU en su lugar para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "fuente",
+		"titulo": "Fuente de alimentación",
+		"descripcion": "La fuente de alimentación sirve para proveer de la cantidad de potencia necesaria a todos los componentes del ordenador. Si la fuente no es lo suficientemente potente los componentes no podrán sacar el máximo rendimiento e incluso puede que fallen. Los componentes que más consumen son la CPU y la GPU, por lo que la suma de sus consumos debe ser inferior a la potencia proporcionada por la fuente.\n\nSu lugar de colocación es en la esquina superior izquierda del ordenador, en una ranura destinada para ello.\nGenera y coloca una fuente en su lugar para continuar.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "cables",
+		"titulo": "Cables y conexiones",
+		"descripcion": "Recuerda que cuando se monta un ordenador no solo hay que colocar los componentes en su lugar, sino que también hay que realizar las conexiones correspondientes (cables del ventilador, HDD, fuente de alimentación, tarjeta de sonido...).\n\nEn este juego las cables y las conexiones se realizarán de manera automática porque dicha tarea no es muy cómoda de realizar en Realidad Virtual.\n\n",
+		"boton": "Continuar",
+		"onclick": "cargarInstruccion(19)"
+	},
+	{
+		"id": "fin",
+		"titulo": "Fin del Tutorial",
+		"descripcion": "Felicidades! Has completado el Tutorial. Ahora ya sabes los controles, las mecánicas y los componentes de un ordenador, así como su lugar de colocación.\n\nEn los próximos niveles no tendrás tantas facilidades, y se tendrán en cuenta las especificaciones de los componentes.\n\nRecuerda que puedes repetir el tutorial tantas veces como quieras. Mucha suerte en los próximos niveles y recuerda pasártelo bien!\n\nUsa el menú de la derecha para finalizar la partida.",
+		"boton": "",
+		"onclick": ""
+	},
+	{
+		"id": "infoFin",
+		"titulo": "Información Fin de Partida",
+		"descripcion": "Esta es la información que se muestra al finalizar una partida. Los colores verde/rojo son sinónimos de aciertos/errores.\n\nA la izquierda se muestran las tareas completadas y no completadas.\nEn la parte derecha se muestra si la colocación de los componentes ha sido correcta. También se muestra si los sockets de la Placa Base y la CPU son compatibles, y si la potencia de la fuente es suficiente para el consumo del ordenador montado.\n\nLa puntuación total (0-10) es el reflejo del tiempo transcurrido y los aciertos/errores cometidos.",
+		"boton": "",
+		"onclick": ""
+	}
+
+]

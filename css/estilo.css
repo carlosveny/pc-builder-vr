@@ -1,0 +1,375 @@
+.bg-body {
+    background-color: #fdfdff !important;
+}
+
+.bg-navbar {
+    background-color: #dbe3ff;
+}
+.link-navbar:hover {
+    color: blue !important;
+}
+
+.contenedor {
+    margin: 20px 15vw 20px 15vw;
+    /* border: 1px solid red; */
+}
+
+.icono {
+    max-width: 20px;
+}
+
+.textura {
+    border: 1px solid #000000;
+    width: 70px;
+    height: 70px;
+}
+
+.justificar {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.linea {
+    border-top: 2px solid black;
+}
+
+/* Banner A-Frame*/
+.banner-container {
+    min-height: 30px;
+    height: fit-content;
+    width:100vw;
+    background-color:rgba(0, 0, 0, 0.366);
+    z-index: 999999;
+    position: fixed;
+}
+.banner {
+    color: white;
+    font-family: monospace;
+    font-size: 1rem;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* Botones*/
+.boton-guardar {
+    background-color: #e3ffd6;
+    border-radius: 4px;
+    border: 1px solid #858585;
+    width: 100px;
+}
+.boton-guardar:hover:enabled {
+    background-color: #bfffb7;
+}
+.boton-editar {
+    background-color: #fff2d6;
+    border-radius: 4px;
+    border: 1px solid #858585;
+    width: 100px;
+}
+.boton-editar:hover:enabled {
+    background-color: #ffe8b7;
+}
+.boton-eliminar {
+    background-color: #ffd6d6;
+    border-radius: 4px;
+    border: 1px solid #858585;
+    width: 100px;
+}
+.boton-eliminar:hover:enabled {
+    background-color: #ffb7b7;
+}
+.boton-a {
+    color: rgb(0, 102, 255);
+    cursor: pointer;
+}
+.boton-a:hover {
+    color: rgb(0, 66, 164);
+    cursor: pointer;
+}
+.boton-rojo {
+    color: rgb(255, 70, 70);
+    cursor: pointer;
+    text-align: end;
+    position: absolute;
+    right: 0px;
+    margin-top: 1px !important;
+    margin-right: 20px;
+    max-width: 150px;
+}
+.boton-rojo:hover {
+    color: rgb(219, 0, 0);
+    cursor: pointer;
+}
+.boton-nuevo {
+    font-size: 1.3rem;
+    color: rgb(0, 168, 39);
+    cursor: pointer;
+    text-decoration: none;
+}
+.boton-nuevo:hover {
+    color: rgb(0, 114, 27);
+}
+.boton-nuevo2 {
+    font-size: 1.2rem;
+    color: rgb(0, 168, 39);
+    cursor: pointer;
+    text-decoration: none;
+}
+.boton-nuevo2:hover {
+    color: rgb(0, 114, 27);
+}
+.boton-salir {
+    font-size: 1rem;
+    color: rgb(62, 141, 211);
+    cursor: pointer;
+    text-decoration: none;
+}
+.boton-nuevo:salir {
+    color: rgb(0, 42, 114);
+}
+
+/* Inputs texto y relacionados */
+.max-w40 {
+    max-width: 40px;
+}
+.max-w90 {
+    max-width: 90px;
+}
+.max-w100 {
+    max-width: 100px;
+}
+.max-w130 {
+    max-width: 130px;
+}
+.max-w160 {
+    max-width: 160px;
+}
+.max-w170 {
+    max-width: 170px;
+}
+.max-w200 {
+    max-width: 200px;
+}
+.min-w110 {
+    min-width: 110px;
+}
+.font-size-input {
+    font-size: 0.8rem;
+    resize: none;
+}
+.font-size-input2 {
+    font-size: 1rem;
+    resize: none;
+}
+.height1-input {
+    height: 28px;
+}
+.height2-input {
+    height: 25px;
+}
+.height3-input {
+    height: 22px;
+}
+.width1-input {
+    max-width: 45vw;
+}
+.width2-input {
+    max-width: 50px;
+}
+.width3-input {
+    max-width: 200px;
+}
+.width4-input {
+    max-width: 180px;
+}
+.width5-input {
+    max-width: 400px;
+}
+.max-w-files {
+    font-size: 0.85rem;
+}
+
+.mg-neg-top {
+    margin-top: -10px;
+    font-size: 0.85rem;
+}
+
+.pieza-rojo {
+    color: red;
+}
+.pieza-verde {
+    color: green;
+}
+.registrado {
+    color: blue;
+}
+.no-registrado {
+    color: green;
+}
+
+/* Centered dialog (https://stackoverflow.com/questions/22658141/css-center-form-in-page-horizontally-and-vertically) */
+.centered-dialog{
+    z-index: 1;
+    position: fixed;
+    top: calc(10vh);
+    /* left: 40%; */
+    left: calc(50vw - 30vw);
+    max-width: 60vw;
+    min-width: 60vw;
+    max-height: 85vh;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #858585;
+    overflow-y:auto;
+}
+#parent {
+    display: table;
+    width: 20%;
+}
+#form_login {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.centered-login{
+    position: fixed;
+    top: calc(50vh - 150px); 
+    /* left: 40%; */
+    left: calc(50vw - 160px);
+    max-width: 320px;
+    min-width: 320px;
+    height: 160px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #858585;
+}
+
+/* Boton cerrar (https://codepen.io/starikovs/pen/DwaGEj) */
+.close-thik {
+    color: #777;
+    font: 20px/100% arial, sans-serif;
+    text-align: end;
+    max-width: 40px;
+    position: absolute;
+    right: 0px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #fff;
+    top: 10px;
+    cursor: pointer;
+}
+.close-thik:after {
+    content: '✖'; /* UTF-8 symbol */
+}
+
+/* Aviso flotante (https://codepen.io/Dinamo/pen/rNVOZmr) */
+.myAlert-top{
+    position: fixed;
+    top: 90px; 
+    left: 25%;
+    width: 50%;
+    z-index: 2;
+}
+
+/* Spinner loading (https://stackoverflow.com/questions/22131821/how-can-i-display-a-loading-gif-until-an-entire-html-page-has-been-loaded) */
+#loading {
+    background: url('../assets/spinner.gif') no-repeat center center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999999;
+}
+
+/* Web Responsive */
+@media (max-width: 1300px) {
+    .centered-dialog{
+        left: calc(50vw - 40vw);
+        max-width: 80vw;
+        min-width: 80vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .contenedor {
+        margin: 20px 5vw 20px 5vw;
+    }
+    .boton-npieza {
+        font-size: 1.1rem;
+    }
+    .width5-input {
+        max-width: 70vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .centered-dialog{
+        left: calc(50vw - 45vw);
+        max-width: 90vw;
+        min-width: 90vw;
+    }
+}
+
+/* Multi select */
+.multi-select-container {
+    display: inline-block;
+    position: relative;
+    max-width: 130px !important;
+    margin-left: -10px !important;
+} 
+.multi-select-menu {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0.8em;
+    float: left;
+    min-width: 100%;
+    max-width: 130px !important;
+    background: #fff;
+    margin: 1em 0;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding: 0.4em 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    background-color: rgb(254, 252, 252) !important;
+    display: none;
+}
+.multi-select-menu input {
+    margin-right: 0.3em;
+    vertical-align: 0.1em;
+}
+.multi-select-button {
+    background-color: #e9e9ed !important;
+    min-width: 130px;
+    display: inline-block;
+    font-size: 0.95em;
+    padding: 0.2em 0.6em;
+    max-width: 20em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: -0.5em;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    cursor: default;
+}
+.multi-select-button:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.4em 0.4em 0 0.4em;
+    border-color: #999 transparent transparent transparent;
+    margin-left: 0.4em;
+    vertical-align: 0.1em;
+}
+.multi-select-container--open .multi-select-menu { display: block; }
+.multi-select-container--open .multi-select-button:after {
+    border-width: 0 0.4em 0.4em 0.4em;
+    border-color: transparent transparent #999 transparent;
+}

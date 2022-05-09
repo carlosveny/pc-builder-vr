@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta informacion -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PC Builder VR - Estadísticas</title>
+    <link rel="icon" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/logo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/logo.png">
+    <meta name="description" content="Zona de estadísticas para el juego PC Builder VR." />
+    <meta name="author" content="Carlos Veny">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="extras/multiselect/jquery-MultiSelect.css">
+    <script type="text/javascript" src="extras/multiselect/jquery.multi-select.js"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf-8"
+        src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/478692bc13.js" crossorigin="anonymous"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
+        type='text/css'>
+    <!-- Local -->
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="js/script-estadisticas.js"></script>
+</head>
+
+<body id="body" class="bg-body" onload="loaded()">
+    <!-- Inicio Navbar -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-3" href="index.html" target=”_blank”>
+                <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-text-top me-1">
+                PC Builder VR
+            </a>
+            <button id="collapser" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation" onclick="moverVentanaAbajo(this)">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link link-navbar" href="admin-piezas.html">Piezas</a>
+                    <a class="nav-link link-navbar" href="admin-pruebas.html">Pruebas</a>
+                    <a class="nav-link link-navbar active" aria-current="page" href="#">Estadísticas</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Fin Navbar -->
+
+    <!-- Inicio Contenedor -->
+    <div class="contenedor">
+        <h2>Estadísticas</h2>
+        <hr>
+
+        <!-- Inicio Filtros -->
+        <div class="row">
+            <div class="col-xl-4 row mb-3">
+                <h6 class="col max-w100 my-auto"><strong>Pruebas:</strong></h6>
+                <select id="filtros-pruebas" class="col-6 font-size-input2 min-w110 width4-input ps-1"
+                    onchange="actualizarTabla('prueba', this.value)">
+                </select>
+            </div>
+            <div class="col-xl-4 row mb-3">
+                <h6 class="col max-w100 my-auto"><strong>Usuarios:</strong></h6>
+                <select id="filtros-usuarios" class="col-6 font-size-input2 min-w110 width4-input ps-1"
+                    onchange="actualizarTabla('usuario', this.value)">
+                    <option value="null">Todos</option>
+                    <option value="1">Registrados</option>
+                    <option value="0">No registrados</option>
+                </select>
+            </div>
+            <div class="col-xl-4 row mb-3">
+                <h6 class="col max-w100 my-auto"><strong>Columnas:</strong></h6>
+                <div class="col-6">
+                    <select id="filtros-columnas" name="filtros-columnas" multiple>
+                        <option value="1" selected="">Usuario</option>
+                        <option value="2">Prueba</option>
+                        <option value="3">Fecha</option>
+                        <option value="4">Tiempo</option>
+                        <option value="5">Puntuación</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Filtros -->
+
+        <!-- Tabla de estadisticas -->
+        <div id="contenedor-estadisticas" class="table-responsive mt-5">
+            <table id="tabla" class="table w-100 bg-body">
+                <thead></thead>
+                <tbody id="tabla-cuerpo"></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Fin Contenedor -->
+
+</body>
+
+</html>

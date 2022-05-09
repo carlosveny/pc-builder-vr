@@ -1,0 +1,823 @@
+<!-- Titulo Menu -->
+<a-entity
+            text="value:PC Builder VR; color:#000000; align: center; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/shadowsintolight/ShadowsIntoLight.json;"
+            position="0 2.5 -2" scale="10 10 10"></a-entity>
+
+<!-- Elementos de menu -->
+<script id="menu-element" type="text/html">
+    <a-entity>
+        <a-box height="0.3" width="3" depth="0.05" src="#centerMenuTexture">
+            <a-text value="${text}" position="0 0.03 0.05" scale="0.8 0.8 0.8" align="center" color="#5e6e04"
+                font-open-sans></a-text>
+        </a-box>
+        <a-box position="-1.5 0 0" height="0.4" width="0.03" depth="0.06" src="#sideMenuTexture"></a-box>
+        <a-box position="1.5 0 0" height="0.4" width="0.03" depth="0.06" src="#sideMenuTexture"></a-box>
+        <a-box position="0 0.15 0" height="0.03" width="3.1" depth="0.06" src="#sideMenuTexture"></a-box>
+        <a-box position="0 -0.15 0" height="0.03" width="3.1" depth="0.06" src="#sideMenuTexture"></a-box>
+    </a-entity>
+</script>
+<script id="menu-element-small" type="text/html">
+    <a-entity>
+        <a-box height="0.3" width="1.3" depth="0.05" src="#centerMenuTexture">
+            <a-text value="${text}" position="0 0 0.05" scale="0.6 0.6 0.6" align="center" color="#5e6e04"
+                font-open-sans></a-text>
+        </a-box>
+        <a-box position="-0.65 0 0" height="0.4" width="0.03" depth="0.06" src="#sideMenuTexture"></a-box>
+        <a-box position="0.65 0 0" height="0.4" width="0.03" depth="0.06" src="#sideMenuTexture"></a-box>
+        <a-box position="0 0.15 0" height="0.03" width="1.4" depth="0.06" src="#sideMenuTexture"></a-box>
+        <a-box position="0 -0.15 0" height="0.03" width="1.4" depth="0.06" src="#sideMenuTexture"></a-box>
+    </a-entity>
+</script>
+
+<a-entity template="src: #menu-element" data-text="Tutorial" position="0 3.25 -3"></a-entity>
+<a-entity template="src: #menu-element" data-text="Nivel Fácil" position="0 2.75 -3"></a-entity>
+<a-entity template="src: #menu-element" data-text="Nivel Medio" position="0 2.25 -3"></a-entity>
+<a-entity template="src: #menu-element" data-text="Nivel Difícil" position="0 1.75 -3"></a-entity>
+<a-entity template="src: #menu-element-small" data-text="Estadísticas" position="-0.85 1.25 -3"></a-entity>
+<a-entity template="src: #menu-element-small" data-text="Ajustes" position="0.85 1.25 -3" to-click></a-entity>
+
+<!-- Teclado -->
+<a-entity id="keyboard" super-keyboard="hand: #rightHand; imagePath:keyboard-dist/; show: true"
+            position="0 1 -1" rotation="-30 0 0" keyboard-functions></a-entity>
+
+<!-- Ajustes -->
+<a-box class="raycastable" position="0 1.5 -1.5" width="1.6" height="1.3" depth="0.05" src="#centerMenuTexture"
+	repeat="1 5">
+	<a-plane position="-0.63 0.55 0.05" width="0.21" height="0.11" color="#a8a8a8">
+		<a-plane position="0 0 0.001" width="0.2" height="0.1" color="#fff7bd" class="raycastable"
+			highlight-amarillo onclick="borrarMenuActual(); loadMenuPrincipal()">
+			<a-text position="0 0.01 0" scale="0.18 0.18 0.18" value="Atrás" color="black" align="center"
+				font-open-sans></a-text>
+		</a-plane>
+	</a-plane>
+
+	<a-text position="0 0.58 0.05" scale="0.35 0.35 0.35" value="AJUSTES" color="black" align="center"
+		font-open-sans></a-text>
+
+	<a-plane id="ajustes-option1-border" position="-0.4 0.4 0.05" width="0.51" height="0.12" color="#a8a8a8">
+		<a-plane position="0 0 0.001" width="0.5" height="0.11" color="#caffc2" class="raycastable"
+			highlight-verde onclick="">
+			<a-text position="0 0.015 0" scale="0.23 0.23 0.23" value="Registrarse" color="black" align="center"
+				font-open-sans></a-text>
+		</a-plane>
+	</a-plane>
+	<a-plane id="ajustes-option2-border" position="0.4 0.4 0.05" width="0.51" height="0.12" color="#a8a8a8">
+		<a-plane position="0 0 0.001" width="0.5" height="0.11" color="#caffc2" class="raycastable"
+			highlight-verde onclick="">
+			<a-text position="0 0.015 0" scale="0.23 0.23 0.23" value="Iniciar Sesión" color="black"
+				align="center" font-open-sans></a-text>
+		</a-plane>
+	</a-plane>
+	<a-plane id="ajustes-option3-border" position="-0.4 0.2 0.05" width="0.51" height="0.12" color="#a8a8a8">
+		<a-plane position="0 0 0.001" width="0.5" height="0.11" color="#caffc2" class="raycastable"
+			highlight-verde onclick="">
+			<a-text position="0 0.015 0" scale="0.23 0.23 0.23" value="Cambiar nombre" color="black"
+				align="center" font-open-sans></a-text>
+		</a-plane>
+	</a-plane>
+	<a-plane id="ajustes-option4-border" position="0.4 0.2 0.05" width="0.51" height="0.12" color="#a8a8a8">
+		<a-plane position="0 0 0.001" width="0.5" height="0.11" color="#caffc2" class="raycastable"
+			highlight-verde onclick="">
+			<a-text position="0 0.015 0" scale="0.23 0.23 0.23" value="Cambiar avatar" color="black"
+				align="center" font-open-sans></a-text>
+		</a-plane>
+	</a-plane>
+
+	<a-plane position="0 0.05 0.05" width="1.4" height="0.005" color="black"></a-plane>
+
+	<a-text position="-0.1 -0.05 0.05" scale="0.2 0.2 0.2" value="Nombre de usuario:" color="black"
+		font-open-sans align="right">
+		<a-plane id="ajustes-input1-border" position="1.7 -0.05 0" width="2.53" height="0.33" color="#a1a1a1">
+			<a-plane position="0 0 0.001" width="2.5" height="0.3" color="#ededed" class="raycastable"
+				highlight-gris onclick="inputTeclado('ajustes-input1')">
+				<a-text id="ajustes-input1" position="-1.15 0 0" scale="0.9 0.9 0.9" value="username"
+					color="black"></a-text>
+			</a-plane>
+		</a-plane>
+	</a-text>
+	<a-text position="-0.1 -0.2 0.05" scale="0.2 0.2 0.2" value="Contraseña:" color="black" font-open-sans
+		align="right">
+		<a-plane id="ajustes-input2-border" position="1.7 -0.05 0" width="2.53" height="0.33" color="#a1a1a1">
+			<a-plane position="0 0 0.001" width="2.5" height="0.3" color="#ededed" class="raycastable"
+				highlight-gris onclick="inputTeclado('ajustes-input2')">
+				<a-text id="ajustes-input2" position="-1.15 0 0" scale="0.9 0.9 0.9" value="password"
+					color="black"></a-text>
+			</a-plane>
+		</a-plane>
+	</a-text>
+	<a-text position="-0.1 -0.35 0.05" scale="0.2 0.2 0.2" value="Repetir contraseña:" color="black"
+		font-open-sans align="right">
+		<a-plane id="ajustes-input3-border" position="1.7 -0.05 0" width="2.53" height="0.33" color="#a1a1a1">
+			<a-plane position="0 0 0.001" width="2.5" height="0.3" color="#ededed" class="raycastable"
+				highlight-gris onclick="inputTeclado('ajustes-input3')">
+				<a-text id="ajustes-input3" position="-1.15 0 0" scale="0.9 0.9 0.9" value="password"
+					color="black"></a-text>
+			</a-plane>
+		</a-plane>
+	</a-text>
+
+	<a-plane position="0 -0.53 0.05" width="0.415" height="0.135" color="#a8a8a8">
+		<a-plane position="0 0 0.001" width="0.4" height="0.12" color="#fff7bd" class="raycastable"
+			highlight-amarillo onclick="botonRegistrarse()">
+			<a-text position="0 0.015 0" scale="0.25 0.25 0.25" value="Registrarse" color="black" align="center"
+				font-open-sans></a-text>
+		</a-plane>
+	</a-plane>
+</a-box>
+
+<!-- Perfil -->
+<a-box overlay="order: 100" position="0.68 2.43 -2" color="#407bcf" scale="0.3 0.3 0.3" width="1.5" height="0.35"
+	depth="0.01" transparent="true">
+	<a-box class="raycastable" overlay="order: 100" color="#000000" width="1.53" height="0.38" depth="0.01" transparent="true">
+	</a-box>
+	<!-- Avatar del perfil -->
+	<a-plane class="raycastable" overlay="order: 101" src="#profileTexture" position="-0.57 0 0" scale="0.28 0.28 0.28"
+		transparent="true"></a-plane>
+	<!-- Nombre del perfil -->
+	<a-text id="profileName" overlay="order: 102" position="-0.35 0 0" scale="0.7 0.7 0.7" value="Carlos"
+		color="#fff2c9">
+	</a-text>
+</a-box>
+
+<!-- Tarjeta componente -->
+<a-rounded position="1.4 1.3 -1.3" rotation="0 -90 0" width="1.1" height="0.3" radius="0.02"
+	color="#c7f4ff" class="raycastable" onclick="generarComponente('cmp-placabase-0')"
+	highlight-componente hc-sound>
+	<a-text position="-0.52 0.12 0" scale="0.22 0.22 0.22" value="Intel i9 9900K" color="black"
+		font-open-sans>
+	</a-text>
+	<a-text position="-0.52 0.03 0" scale="0.17 0.17 0.17" value="Arquitectura:" color="black"
+		font-open-sans>
+		<a-text position="1.5 0 0" value="Intel" color="black" font-open-sans></a-text>
+	</a-text>
+	<a-text position="-0.52 -0.03 0" scale="0.17 0.17 0.17" value="Socket:" color="black"
+		font-open-sans>
+		<a-text position="1.5 0 0" value="LGA 1700" color="black" font-open-sans></a-text>
+	</a-text>
+	<a-text position="-0.52 -0.09 0" scale="0.17 0.17 0.17" value="Consumo:" color="black"
+		font-open-sans>
+		<a-text position="1.5 0 0" value="125W" color="black" font-open-sans></a-text>
+	</a-text>
+
+	<a-text position="0.1 0.03 0" scale="0.17 0.17 0.17" value="Nucleos:" color="black" font-open-sans>
+		<a-text position="1.5 0 0" value="10" color="black" font-open-sans></a-text>
+	</a-text>
+	<a-text position="0.1 -0.03 0" scale="0.17 0.17 0.17" value="Frecuencia:" color="black"
+		font-open-sans>
+		<a-text position="1.5 0 0" value="3.7 GHz" color="black" font-open-sans></a-text>
+	</a-text>
+	<a-text position="0.1 -0.09 0" scale="0.17 0.17 0.17" value="Turbo:" color="black" font-open-sans>
+		<a-text position="1.5 0 0" value="4.9 GHz" color="black" font-open-sans></a-text>
+	</a-text>
+</a-rounded>
+<!-- Mesa trabajo "Componente actual" -->
+<a-box position="0 1.15 -1.9" rotation="-20 180 0" width="1.15" height="0.42" depth="0.01" color="white"
+	class="raycastable">
+	<a-text position="0 0.17 0.01" value="Componente actual" align="center" scale="0.26 0.26 0.26" color="black"
+		font-open-sans></a-text>
+	<a-rounded position="0 -0.04 0.01" width="1.1" height="0.3" radius="0.02" color="#c7f4ff"
+		class="raycastable">
+		<a-text position="-0.52 0.12 0" scale="0.22 0.22 0.22" value="Intel i9 9900K" color="black"
+			font-open-sans>
+		</a-text>
+		<a-text position="-0.52 0.03 0" scale="0.17 0.17 0.17" value="Arquitectura:" color="black"
+			font-open-sans>
+			<a-text position="1.5 0 0" value="Intel" color="black" font-open-sans></a-text>
+		</a-text>
+		<a-text position="-0.52 -0.03 0" scale="0.17 0.17 0.17" value="Socket:" color="black"
+			font-open-sans>
+			<a-text position="1.5 0 0" value="LGA 1700" color="black" font-open-sans></a-text>
+		</a-text>
+		<a-text position="-0.52 -0.09 0" scale="0.17 0.17 0.17" value="Consumo:" color="black"
+			font-open-sans>
+			<a-text position="1.5 0 0" value="125W" color="black" font-open-sans></a-text>
+		</a-text>
+
+		<a-text position="0.1 0.03 0" scale="0.17 0.17 0.17" value="Nucleos:" color="black" font-open-sans>
+			<a-text position="1.5 0 0" value="10" color="black" font-open-sans></a-text>
+		</a-text>
+		<a-text position="0.1 -0.03 0" scale="0.17 0.17 0.17" value="Frecuencia:" color="black"
+			font-open-sans>
+			<a-text position="1.5 0 0" value="3.7 GHz" color="black" font-open-sans></a-text>
+		</a-text>
+		<a-text position="0.1 -0.09 0" scale="0.17 0.17 0.17" value="Turbo:" color="black" font-open-sans>
+			<a-text position="1.5 0 0" value="4.9 GHz" color="black" font-open-sans></a-text>
+		</a-text>
+	</a-rounded>
+</a-box>
+	
+<!-- Mesa trabajo carteles -->
+<a-box position="0.85 0.97 -2.15" rotation="-10 180 0" width="0.44" height="0.07" depth="0.005"
+	color="#ebebeb" static-body="shape:box">
+	<a-text position="0 0.02 0.003" scale="0.2 0.2 0.2" value="Zona de aparición" align="center"
+		color="black" font-open-sans></a-text>
+</a-box>
+<a-box position="-0.85 0.97 -2.15" rotation="-10 180 0" width="0.44" height="0.07" depth="0.005"
+	color="#ebebeb" static-body="shape:box">
+	<a-text position="0 0.02 0.003" scale="0.19 0.19 0.19" value="Zona de recolocación" align="center"
+		color="black" font-open-sans></a-text>
+</a-box>
+
+// Mover personaje (modo antiguo)
+document.getElementById("rig").object3D.position.set(0, 0, -15.7);
+document.getElementById("rig").setAttribute("rotation", "0 180 0");
+document.getElementById("camara").object3D.position.set(0, 1.7, 0);
+
+
+
+<div class="centered-dialog">
+	<form class="row mt-3 mb-3 m-3">
+		<a href="#" onclick="cerrarVentana(this)" class="close-thik"></a>
+		<h4 class="row ms-0 mt-1 mb-3">Introducir Pieza</h4>
+
+		<div class="row">
+			<h6 class="col mt-1 mb-3 max-w100"><strong>Nombre:</strong></h6>
+			<input id="inp-nombre" type="text" class="col font-size-input width1-input height2-input" required
+				minlength="1" maxlength="50" oninput="revisarCamposVacios()">
+		</div>
+
+		<div class="col-lg-5 mb-4">
+
+			<h6 class="mb-1"><strong>Descripción:</strong></h6>
+			<textarea id="inp-descripcion" class="font-size-input col-12 ps-1" rows="5"
+				oninput="revisarCamposVacios()"></textarea>
+
+
+			<h6 class="mt-3 mb-1"><strong>Dimensiones en mm (ancho X alto X fondo):</strong></h6>
+			<div class="row ms-0">
+				<input id="inp-ancho" type="text" class="col font-size-input width2-input height2-input" required
+					minlength="1" maxlength="3" oninput="revisarCamposVacios()">
+				<p class="col text-center max-w40">X</p>
+				<input id="inp-alto" type="text" class="col font-size-input width2-input height2-input" required
+					minlength="1" maxlength="3" oninput="revisarCamposVacios()">
+				<p class="col text-center max-w40">X</p>
+				<input id="inp-fondo" type="text" class="col font-size-input width2-input height2-input" required
+					minlength="1" maxlength="3" oninput="revisarCamposVacios()">
+			</div>
+
+
+			<h6><strong>Textura (subir o seleccionar):</strong></h6>
+			<div class="row">
+				<div class="col-xxl-10 mb-3">
+					<div id="fileinput-container">
+						<input class="row max-w-files mb-3 ms-0" type="file" id="inp-file1" accept=".png, .jpg"
+							oninput="inputTextura(true)">
+					</div>
+					<select id="inp-file2" class="row max-w200 font-size-input ms-0"
+						onchange="inputTextura(false); revisarCamposVacios()">
+						<option value="default" selected disabled hidden>Seleccionar existente...</option>
+						<option value="defaultTexture" title="cpu.jpg">Default Texture</option>
+					</select>
+				</div>
+				<div class="col-xxl-2 text-start">
+					<img id="inp-textura" class="textura" src="assets/texturesComponents/texture.jpg">
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-2"></div>
+
+		<div class="col-lg-5 mb-3">
+
+			<div class="row">
+				<h6 class="col max-w170"><strong>Marca:</strong></h6>
+				<input id="inp-marca" type="text" class="col font-size-input width3-input height2-input ps-1"
+					required minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+			</div>
+
+			<div class="row mt-2">
+				<h6 class="col max-w170"><strong>Modelo:</strong></h6>
+				<input id="inp-modelo" type="text" class="col font-size-input width3-input height2-input ps-1"
+					required minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+			</div>
+
+			<div class="row mt-2">
+				<h6 class="col max-w170"><strong>Tipo de pieza:</strong></h6>
+				<select id="inp-tipo" class="col font-size-input width3-input height2-input ps-0"
+					onchange="revisarCamposVacios()">
+					<option value="default" selected disabled hidden>Elegir...</option>
+					<option value="placabase">Placa Base</option>
+					<option value="cpu">CPU</option>
+					<option value="ventilador">Ventilador</option>
+					<option value="ram">RAM</option>
+					<option value="disco">Disco</option>
+					<option value="fuente">Fuente</option>
+					<option value="gpu">GPU</option>
+				</select>
+			</div>
+
+			<div id="extras" class="mt-5">
+
+				<div class="row mt-2">
+					<h6 class="col max-w170"><strong>Arquitectura:</strong></h6>
+					<select id="inp-extra1" class="col font-size-input width3-input height2-input ps-0"
+						onchange="revisarCamposVacios()">
+						<option value="default" selected disabled hidden>Elegir...</option>
+						<option value="intel">Intel</option>
+						<option value="amd">AMD</option>
+					</select>
+				</div>
+
+				<div class="row mt-2">
+					<h6 class="col max-w170"><strong>Socket:</strong></h6>
+					<input id="inp-extra2" type="text" class="col font-size-input width3-input height2-input ps-1"
+						required minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+				</div>
+
+				<div class="row mt-2">
+					<h6 class="col max-w170"><strong>Núcleos:</strong></h6>
+					<input id="inp-extra3" type="text" class="col font-size-input width3-input height2-input ps-1"
+						required minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+				</div>
+
+				<div class="row mt-2">
+					<h6 class="col max-w170"><strong>Frec. base (GHz):</strong></h6>
+					<input id="inp-extra4" type="text" class="col font-size-input width3-input height2-input ps-1"
+						required minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+				</div>
+
+				<div class="row mt-2">
+					<h6 class="col max-w170"><strong>Frec. turbo (GHz):</strong></h6>
+					<input id="inp-extra5" type="text" class="col font-size-input width3-input height2-input ps-1"
+						required minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+				</div>
+
+				<div class="row mt-2">
+					<h6 class="col max-w170"><strong>Consumo (W):</strong></h6>
+					<input id="inp-extra6" type="text" class="col font-size-input width3-input height2-input ps-1"
+						required minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="text-center">
+			<button id="bt-guardar" type="button" class="boton-guardar" onclick="botonGuardar()"
+				disabled>Introducir</button>
+		</div>
+	</form>
+</div>
+
+
+<div id="dialog" class="centered-dialog">
+	<form class="row mt-3 mb-3 m-3">
+		<a onclick="cerrarVentana(this)" class="close-thik"></a>
+		<h5 class="row ms-0 mt-1 mb-3">Intel Core i5-12600K</h5>
+		<div class="col-lg-5 mb-4">
+			<h6 class="mb-1"><strong>Descripción:</strong></h6>
+			<div class="justificar">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+				incididunt ut labore
+				et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+				aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			</div>
+			<h6 class="mt-3 mb-1"><strong>Dimensiones (ancho X alto X fondo):</strong></h6>
+			<p>20mm x 10mm x 5mm</p>
+			<h6><strong>Textura:</strong></h6>
+			<img class="textura" src="assets/acera.jpg">
+		</div>
+
+		<div class="col-lg-2"></div>
+
+		<div class="col-lg-5 mb-3">
+			<h6 class=""><strong>Marca: </strong> Intel</h6>
+			<h6><strong>Modelo: </strong> i5-12600K</h6>
+			<h6><strong>Tipo de pieza: </strong> CPU</h6>
+			<h6 class="mt-4"><strong>Arquitectura: </strong> Intel</h6>
+			<h6><strong>Socket: </strong> LGA1700</h6>
+			<h6><strong>Núcleos: </strong> 10</h6>
+			<h6><strong>Frecuencia base: </strong> 3.7 GHz</h6>
+			<h6><strong>Frecuencia turbo: </strong> 4.9 GHz</h6>
+			<h6><strong>Consumo: </strong> 125 W</h6>
+		</div>
+
+		<hr>
+		<div class="text-center">
+			<button id="bt-editar" type="button" class="boton-editar me-2" onclick="crearVentanaInputs()"
+				>Editar</button>
+			<button id="bt-eliminar" type="button" class="boton-eliminar ms-2" onclick="botonEliminar()"
+				>Eliminar</button>
+		</div>
+	</form>
+</div>
+
+
+<h3>CPU</h3>
+<div class="card mt-3">
+	<div class="card-body">
+		<h5 class="card-title">Intel Core i5-12600K</h5>
+		<div class="card-text">
+			<div class="row">
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Arquitectura:</strong></div>
+					<div class="col">Intel</div>
+				</div>
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Socket:</strong></div>
+					<div class="col">LGA17000</div>
+				</div>
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Consumo:</strong></div>
+					<div class="col">125 W</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Núcleos:</strong></div>
+					<div class="col">10</div>
+				</div>
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Frecuencia:</strong></div>
+					<div class="col">3.7 GHz</div>
+				</div>
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Turbo:</strong></div>
+					<div class="col">4.9 GHz</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-3">
+			<a class="boton-a"><i class="fa-regular fa-bookmark me-1"></i></i>Detalles</a>
+			<a class="boton-a ms-3" onclick="crearVentanaInputs('cmp-placabase-0')"><i
+					class="fa-regular fa-pen-to-square me-1"></i>Editar</a>
+			<a class="boton-a ms-3"><i class="fa fa-ban me-1"></i>Eliminar</a>
+		</div>
+	</div>
+</div>
+
+<hr>
+<h3>Placa Base</h3>
+<div class="card mt-3">
+	<div class="card-body">
+		<h5 class="card-title">Intel Core i5-12600K</h5>
+		<div class="card-text">
+			<div class="row">
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Arquitectura:</strong></div>
+					<div class="col">Intel</div>
+				</div>
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Socket:</strong></div>
+					<div class="col">LGA17000</div>
+				</div>
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Consumo:</strong></div>
+					<div class="col">125 W</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Núcleos:</strong></div>
+					<div class="col">10</div>
+				</div>
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Frecuencia:</strong></div>
+					<div class="col">3.7 GHz</div>
+				</div>
+				<div class="col-lg-4 row">
+					<div class="col max-w130"><strong>Turbo:</strong></div>
+					<div class="col">4.9 GHz</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-3">
+			<a href="#"><i class="fa-regular fa-bookmark me-1"></i></i>Detalles</a>
+			<a href="#" class="ms-3" onclick="crearVentanaInputs('cmp-placabase-0')"><i
+					class="fa-regular fa-pen-to-square me-1"></i>Editar</a>
+			<a href="#" class="ms-3"><i class="fa fa-ban me-1"></i>Eliminar</a>
+		</div>
+	</div>
+</div>
+
+
+<!-- Detalles prueba -->
+<div id="dialog" class="centered-dialog">
+<form class="row mt-3 mb-3 m-3">
+	<a onclick="cerrarVentana(this)" class="close-thik"></a>
+	<h4 class="row ms-0 mt-1 mb-3">Tutorial</h4>
+	<div class="col-lg-5 mb-1">
+		<h6 class="mb-1"><strong>Descripción:</strong></h6>
+		<div class="mb-1 justificar">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+			tempor
+			incididunt ut labore
+			et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+			aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		</div>
+	</div>
+
+	<div class="col-lg-2"></div>
+
+	<div class="col-lg-5 mb-3">
+		<h6 class=""><strong>Dificultad: </strong> Fácil</h6>
+	</div>
+
+	<h5 class="mt-3">Tarea 0</h5>
+	<h6 id="tarea-0"><strong>Descripción:&nbsp;&nbsp;&nbsp;</strong>Memoria RAM mínima: 0 GB</h6>
+
+	<h5 class="mt-3">Tarea 1</h5>
+	<h6 id="tarea-1"><strong>Descripción:&nbsp;&nbsp;&nbsp;</strong>Memoria HDD mínima: 0 GB</h6>
+
+	<h5 class="mt-3">Tarea 2</h5>
+	<h6 id="tarea-2"><strong>Descripción:&nbsp;&nbsp;&nbsp;</strong>Memoria SSD mínima: 0 GB</h6>
+
+	<h5 class="mt-3">Tarea 3</h5>
+	<h6 id="tarea-3"><strong>Descripción:&nbsp;&nbsp;&nbsp;</strong>Monta el ordenador siguiendo el tutorial.</h6>
+
+	<hr class="mt-3">
+	<div class="text-center">
+		<button id="bt-editar" type="button" class="boton-editar me-2"
+			onclick="crearVentanaInputs()">Editar</button>
+		<button id="bt-eliminar" type="button" class="boton-eliminar ms-2"
+			onclick="botonEliminar()">Eliminar</button>
+	</div>
+</form>
+</div>
+
+
+<!-- Editar prueba -->
+<div class="centered-dialog">
+	<form class="row mt-3 mb-3 m-3">
+		<a href="#" onclick="cerrarVentana(this)" class="close-thik"></a>
+		<h4 class="row ms-0 mt-1 mb-3">Introducir Prueba</h4>
+
+		<div class="row">
+			<h6 class="col mt-1 mb-4 max-w100"><strong>Nombre:</strong></h6>
+			<input id="inp-nombre" type="text" class="col font-size-input width1-input height2-input" required
+				minlength="1" maxlength="20" oninput="revisarCamposVacios()">
+		</div>
+
+		<div class="col-lg-5 mb-4">
+			<h6 class="mb-1"><strong>Descripción:</strong></h6>
+			<textarea id="inp-descripcion" class="font-size-input col-12 ps-1" rows="4" maxlength="200"
+				oninput="revisarCamposVacios()"></textarea>
+		</div>
+
+		<div class="col-lg-2"></div>
+
+		<div class="col-lg-5 mb-4">
+			<div class="row">
+				<h6 class="col max-w130"><strong>Dificultad:</strong></h6>
+				<select id="inp-dificultad" class="col font-size-input width4-input height2-input ps-0"
+					onchange="revisarCamposVacios()">
+					<option value="default" selected disabled hidden>Elegir...</option>
+					<option value="1">Fácil</option>
+					<option value="2">Medio</option>
+					<option value="3">Difícil</option>
+				</select>
+			</div>
+		</div>
+
+		<div id="contenedor-tareas">
+			<div id="tarea-0">
+				<hr>
+
+				<div class="row">
+					<h5 id="inp-titulo-0" class="col max-w90">Tarea 0</h5>
+					<a class="col boton-rojo ms-3"><i class="fa fa-ban me-1"></i>Eliminar tarea</a>
+				</div>
+
+				<div class="row">
+					<h6 class="col max-w130"><strong>Descripción:</strong></h6>
+					<input id="inp-descripcion-0" type="text"
+						class="col font-size-input width5-input height2-input ps-1" required minlength="1"
+						maxlength="50" oninput="revisarCamposVacios()">
+				</div>
+
+				<div class="row mt-3">
+					<h6 class="col max-w130"><strong>Tipo de pieza:</strong></h6>
+					<select id="inp-tipo-0" class="col font-size-input width4-input height2-input ps-0"
+						onchange="revisarCamposVacios()">
+						<option value="default" selected disabled hidden>Elegir...</option>
+						<option value="placabase">Placa Base</option>
+						<option value="cpu">CPU</option>
+						<option value="ventilador">Ventilador</option>
+						<option value="ram">RAM</option>
+						<option value="disco">Disco</option>
+						<option value="fuente">Fuente</option>
+						<option value="gpu">GPU</option>
+					</select>
+				</div>
+
+				<div class="row mt-2">
+					<div class="col-lg-6 row mb-2">
+						<h6 class="col max-w130"><strong>Atributo:</strong></h6>
+						<select id="inp-atributo-0" class="col font-size-input width4-input height2-input ps-0"
+							onchange="revisarCamposVacios()">
+							<option value="default" selected disabled hidden>Elegir...</option>
+							<option value="placabase">Placa Base</option>
+							<option value="cpu">CPU</option>
+							<option value="ventilador">Ventilador</option>
+							<option value="ram">RAM</option>
+							<option value="disco">Disco</option>
+							<option value="fuente">Fuente</option>
+							<option value="gpu">GPU</option>
+						</select>
+					</div>
+
+					<div class="col-lg-6 row mb-2">
+						<h6 class="col max-w130"><strong>Acción:</strong></h6>
+						<select id="inp-accion-0" class="col font-size-input width4-input height2-input ps-0"
+							onchange="revisarCamposVacios()">
+							<option value="default" selected disabled hidden>Elegir...</option>
+							<option value="=">es igual</option>
+							<option value="!=">no es igual</option>
+							<option value=">">es mayor que</option>
+							<option value="<">es menor que</option>
+							<option value="BETWEEN">está entre</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-lg-6 row mb-2">
+						<h6 class="col max-w130"><strong>Valor 1:</strong></h6>
+						<input id="inp-valor1-0" type="text"
+							class="col font-size-input width4-input height2-input ps-1" required minlength="1"
+							maxlength="50" oninput="revisarCamposVacios()">
+					</div>
+
+					<div class="col-lg-6 row mb-2">
+						<h6 class="col max-w130"><strong>Valor 2:</strong></h6>
+						<input id="inp-valor2-0" type="text"
+							class="col font-size-input width4-input height2-input ps-1" required minlength="1"
+							maxlength="50" oninput="revisarCamposVacios()">
+					</div>
+				</div>
+			</div>
+
+			<div id="tarea-0">
+				<hr>
+
+				<div class="row">
+					<h5 id="inp-titulo-0" class="col max-w90">Tarea 0</h5>
+					<a class="col boton-rojo ms-3"><i class="fa fa-ban me-1"></i>Eliminar tarea</a>
+				</div>
+
+				<div class="row">
+					<h6 class="col max-w130"><strong>Descripción:</strong></h6>
+					<input id="inp-descripcion-0" type="text"
+						class="col font-size-input width5-input height2-input ps-1" required minlength="1"
+						maxlength="50" oninput="revisarCamposVacios()">
+				</div>
+
+				<div class="row mt-3">
+					<h6 class="col max-w130"><strong>Tipo de pieza:</strong></h6>
+					<select id="inp-tipo-0" class="col font-size-input width4-input height2-input ps-0"
+						onchange="revisarCamposVacios()">
+						<option value="default" selected disabled hidden>Elegir...</option>
+						<option value="placabase">Placa Base</option>
+						<option value="cpu">CPU</option>
+						<option value="ventilador">Ventilador</option>
+						<option value="ram">RAM</option>
+						<option value="disco">Disco</option>
+						<option value="fuente">Fuente</option>
+						<option value="gpu">GPU</option>
+					</select>
+				</div>
+
+				<div class="row mt-2">
+					<div class="col-lg-6 row mb-2">
+						<h6 class="col max-w130"><strong>Atributo:</strong></h6>
+						<select id="inp-atributo-0" class="col font-size-input width4-input height2-input ps-0"
+							onchange="revisarCamposVacios()">
+							<option value="default" selected disabled hidden>Elegir...</option>
+							<option value="placabase">Placa Base</option>
+							<option value="cpu">CPU</option>
+							<option value="ventilador">Ventilador</option>
+							<option value="ram">RAM</option>
+							<option value="disco">Disco</option>
+							<option value="fuente">Fuente</option>
+							<option value="gpu">GPU</option>
+						</select>
+					</div>
+
+					<div class="col-lg-6 row mb-2">
+						<h6 class="col max-w130"><strong>Acción:</strong></h6>
+						<select id="inp-accion-0" class="col font-size-input width4-input height2-input ps-0"
+							onchange="revisarCamposVacios()">
+							<option value="default" selected disabled hidden>Elegir...</option>
+							<option value="=">es igual</option>
+							<option value="!=">no es igual</option>
+							<option value=">">es mayor que</option>
+							<option value="<">es menor que</option>
+							<option value="BETWEEN">está entre</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<div class="col-lg-6 row mb-2">
+						<h6 class="col max-w130"><strong>Valor 1:</strong></h6>
+						<input id="inp-valor1-0" type="text"
+							class="col font-size-input width4-input height2-input ps-1" required minlength="1"
+							maxlength="50" oninput="revisarCamposVacios()">
+					</div>
+
+					<div class="col-lg-6 row mb-2">
+						<h6 class="col max-w130"><strong>Valor 2:</strong></h6>
+						<input id="inp-valor2-0" type="text"
+							class="col font-size-input width4-input height2-input ps-1" required minlength="1"
+							maxlength="50" oninput="revisarCamposVacios()">
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<hr>
+		<a class="boton-nuevo2 mb-2 max-w160" onclick="crearNuevaTarea()"><i
+				class="fa-solid fa-circle-plus me-2"></i>Nueva
+			tarea</a>
+
+
+		<hr class="linea">
+		<div class="text-center">
+			<button id="bt-guardar" type="button" class="boton-guardar" onclick="botonGuardar()"
+				disabled>Introducir</button>
+		</div>
+	</form>
+</div>
+
+
+<!-- Tarjeta -->
+<div class="card mt-4">
+	<div class="card-body">
+		<h4 class="card-title mb-3">Tutorial</h4>
+		<div class="card-text">
+			<div class="row">
+				<div class="col-lg row">
+					<div class="col max-w130"><strong>Descripción:</strong></div>
+					<div class="col justificar">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+						do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+						veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+						dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+						sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+				</div>
+			</div>
+			<div class="row mt-1">
+				<div class="col-lg row">
+					<div class="col max-w130"><strong>Dificultad:</strong></div>
+					<div class="col">Fácil</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-4">
+			<a class="boton-a" onclick="crearVentanaSinInputs('prueba-0')"><i
+					class="fa-regular fa-bookmark me-1"></i></i>Detalles</a>
+			<a class="boton-a ms-3" onclick="crearVentanaInputs('cmp-placabase-0')"><i
+					class="fa-regular fa-pen-to-square me-1"></i>Editar</a>
+			<a class="boton-a ms-3"><i class="fa fa-ban me-1"></i>Eliminar</a>
+		</div>
+	</div>
+</div>
+
+
+<!-- Tabla de estadisticas -->
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+		  <tr>
+			<th scope="col">#</th>
+			<th scope="col">Usuario</th>
+			<th scope="col">Prueba</th>
+			<th scope="col">Fecha</th>
+			<th scope="col">Tiempo</th>
+			<th scope="col">Puntuación</th>
+		  </tr>
+		</thead>
+		<tbody id="tabla-cuerpo">
+		  <tr>
+			<th scope="row">1</th>
+			<td>aaaaaaaaaaaaaaa</td>
+			<td>aaaaaaaaaaaaaaaaaaaa</td>
+			<td>21/04/2022</td>
+			<td>00:00</td>
+			<td>10.00</td>
+		  </tr>
+		  <tr>
+			<th scope="row">2</th>
+			<td>aaaaaaaaaaaaaaa</td>
+			<td>aaaaaaaaaaaaaaaaaaaa</td>
+			<td>21/04/2022</td>
+			<td>00:00</td>
+			<td>10.00</td>
+		  </tr>
+		</tbody>
+	  </table>
+</div>
+
+
+
+<select id="filtros-pruebas" class="col-6 font-size-input2 min-w110 width4-input"
+	onchange="crearTarjetasComponentes(this.value)">
+	<option value="null" selected>Todas</option>
+	<option value="placabase">Placa Base</option>
+	<option value="cpu">CPU</option>
+	<option value="ventilador">Ventilador</option>
+	<option value="ram">RAM</option>
+	<option value="disco">Disco</option>
+	<option value="fuente">Fuente</option>
+	<option value="gpu">GPU</option>
+</select>
