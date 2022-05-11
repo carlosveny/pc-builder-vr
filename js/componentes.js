@@ -11,6 +11,8 @@ AFRAME.registerComponent('hc-sound', {
 		});
 		this.el.addEventListener('click', function (evt) {
 			document.querySelector("#click-sound").play();
+			var musica = document.querySelector("#background-music");
+			if (musica.paused) musica.play();
 		});
 	}
 });
@@ -230,7 +232,7 @@ AFRAME.registerComponent('controller-cmp', {
 
 		// Boton para centrar el player en la zona central
 		this.el.addEventListener('xbuttondown', function(evt){
-			console.log("Boton 'x' pulsado");
+			console.log("Boton 'X' pulsado");
 			// El jugador esta dentro
 			if (inside) {
 				centerPlayer(0, -15.7, "0 180 0");
@@ -239,6 +241,12 @@ AFRAME.registerComponent('controller-cmp', {
 			else {
 				centerPlayer(0, 0, "0 0 0");
 			}
+		});
+
+		// Boton para mostrar/ocultar el menu de musica
+		this.el.addEventListener('ybuttondown', function(evt){
+			console.log("Boton 'Y' pulsado");
+			menuMusica(volumenMusica);
 		});
 	}
 });

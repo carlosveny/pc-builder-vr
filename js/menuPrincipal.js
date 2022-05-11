@@ -12,6 +12,7 @@ var actualPassword = ""; //contraseña en texto plano
 var actualAvatar = 1; //1-5. 11-12 (diseñador piezas y pruebas)
 var actualTipoUsuario = 0; //0: Jugador, 1: D.Piezas, 2: D. Pruebas
 var pruebas;
+var volumenMusica = 0.25;
 
 // Funcion que se ejecuta al cargarse la pagina
 function loaded() {
@@ -28,7 +29,16 @@ function loaded() {
 		var sceneEl = document.getElementById("escena");
 		sceneEl.systems.physics.driver.world.gravity.y = -0.5;
 	});
+	// Evento de teclado ('M') para abrir el menu de musica
+	document.addEventListener('keydown', function (event) {
+		if (event.key == "m" || event.key == "M") {
+			menuMusica(volumenMusica);
+		}
+	});
 
+	document.querySelector("#background-music").loop = true;
+	document.querySelector("#background-music").volume = volumenMusica;
+	document.querySelector("#background-music").play();
 	crearEscenarioExterior();
 	// Recargar menu para evitar bugs con la fuente
 	setTimeout(() => {
@@ -492,6 +502,77 @@ function crearAvisoBannerPerfil() {
 	document.getElementById("aviso").appendChild(avatar);
 	document.getElementById("aviso").appendChild(botonInf);
 	document.getElementById("aviso").appendChild(botonAtr);
+}
+
+// Funcion que crea/elimina el menu de musica
+function menuMusica(porcentaje) {
+	// Borrar si ya existe
+	if (document.getElementById("menu-musica") != null) {
+		document.getElementById("menu-musica").remove();
+		return;
+	}
+
+	// Coordenadas mundo de la camara
+    var cameraEl = document.querySelector('#tracker-cam');
+    var cameraPos = new THREE.Vector3();
+    cameraPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+
+	// Entidad y texto
+	var entidad = document.createElement("a-entity");
+	setAttributes(entidad, {id: "menu-musica", "position": cameraPos, "scale": "0.8 0.8 0.8"});
+	entidad.setAttribute("look-at", "#camara");
+	var texto = document.createElement("a-text");
+	setAttributes(texto, { position: "0 0.2 0", rotation: "0 0 0", value: "Música" });
+	setAttributes(texto, { align: "center", scale: "0.5 0.5 0.5", color: "black" });
+	texto.setAttribute("font-open-sans", "");
+	var info = document.createElement("a-text");
+	var val = "Pulsa el botón Y para ocultar este menú";
+	setAttributes(info, { position: "0 -0.24 0", rotation: "0 0 0", value: val });
+	setAttributes(info, { align: "center", scale: "0.18 0.18 0.18", color: "black" });
+	info.setAttribute("font-open-sans", "");
+
+	// Contenedor
+	var cont = document.createElement("a-gui-flex-container");
+	setAttributes(cont, { id: "gui-container", opacity: "0.95", width: "1.6", height: "0.6" });
+	setAttributes(cont, { position: "0 0 0", rotation: "0 0 0", class:"raycastable" });
+	cont.setAttribute("flex-direction", "column");
+	cont.setAttribute("justify-content", "flexEnd");
+	cont.setAttribute("align-items", "normal");
+	cont.setAttribute("component-padding", "0.1");
+	cont.setAttribute("panel-color", "#b5d1ff");
+	cont.setAttribute("panel-rounded", "0.05");
+
+	// Slider
+	var sl = document.createElement("a-gui-slider");
+	setAttributes(sl, { id: "slider", class: "raycastable", width: "2.5", height: "0.3" });
+	setAttributes(sl, { onclick: "slideActionFunction", percent: porcentaje });
+	setAttributes(sl, { margin: "0 0 0.1 0", scale: "0.5 0.5 0.5", position: "0 -0.5 0" });
+	sl.setAttribute("handle-outer-radius", "0.06");
+	sl.setAttribute("handle-inner-radius", "0.04");
+	sl.setAttribute("background-color", "#abacff");
+	sl.setAttribute("active-color", "#fa341e");
+
+	// Appends
+	cont.appendChild(sl);
+	entidad.appendChild(texto);
+	entidad.appendChild(cont);
+	entidad.appendChild(info);
+	document.getElementById("esc-dinamico").appendChild(entidad);
+}
+
+// Funcion que se ejecuta al cambiar el volumen de la musica
+function slideActionFunction(click, percent) {
+	document.querySelector("#click-sound").play();
+	volumenMusica = percent;
+
+	var musica = document.querySelector("#background-music");
+	if (volumenMusica < 0.005) {
+		musica.pause();
+	}
+	else {
+		if (musica.paused) musica.play();
+		musica.volume = volumenMusica;
+	}
 }
 
 /* ---------------------------------------------------------------------------- */

@@ -664,6 +664,7 @@ AFRAME.registerComponent('colision', {
             }
             // Si el componente esta colocado quitarlo
             if (comp.getAttribute("static-body") != null && !terminado) {
+                document.querySelector("#unsnap-sound").play();
                 // Si se quiere quitar una placa base
                 if (comp.getAttribute("id").includes("placabase")) {
                     // Eliminar drop zones y componentes relativos a la placa base

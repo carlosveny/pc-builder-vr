@@ -30,11 +30,13 @@
     <!-- aabb-collider -->
     <script
         src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script>
-    <!-- Keyboard, rounded, multiSRC and Instanced Mesh -->
+    <!-- Keyboard, multiSRC, Instanced Mesh, GUI and look-at -->
     <script src="extras/keyboard-dist/aframe-super-keyboard.min.js"></script>
-    <script src="extras/aframe-rounded-master/lib/rounded.js"></script>
+    <!-- <script src="extras/aframe-rounded-master/lib/rounded.js"></script> -->
     <script src="extras/aframe-multisrc-component/aframe-multisrc-component.js"></script>
     <script src="extras/instanced-mesh/instanced-mesh.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <!-- Local -->
     <link rel="stylesheet" href="css/estilo.css">
     <script src="js/componentes.js"></script>
@@ -78,6 +80,8 @@
             <audio id="hover-sound" crossorigin="anonymous" src="assets/sounds/hoverSound.mp3"></audio>
             <audio id="fin-sound" crossorigin="anonymous" src="assets/sounds/finPartidaSound.mp3"></audio>
             <audio id="snap-sound" crossorigin="anonymous" src="assets/sounds/snapSound.mp3"></audio>
+            <audio id="unsnap-sound" crossorigin="anonymous" src="assets/sounds/unsnapSound.mp3"></audio>
+            <audio id="background-music" crossorigin="anonymous" src="assets/sounds/backgroundMusic.mp3"></audio>
             <img id="groundTexture" crossorigin="anonymous" src="assets/baldosa.jpg">
             <img id="wallTexture" crossorigin="anonymous" src="assets/wall.jpg">
             <img id="ceilingTexture" crossorigin="anonymous" src="assets/ceiling.jpg">
@@ -365,7 +369,9 @@
         <!-- Rig para mover la camara y los controllers -->
         <a-entity id="rig" position="0 0.2 0" rotation="0 0 0">
             <!-- Camara -->
-            <a-camera id="camara" position="0 1.6 0" look-controls wasd-controls></a-camera>
+            <a-camera id="camara" position="0 1.6 0" look-controls wasd-controls>
+                <a-entity id="tracker-cam" position="0 0 -1.1"></a-entity>
+            </a-camera>
 
             <!-- Cursor con raycaster -->
             <a-entity id="cursor" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .raycastable"></a-entity>

@@ -315,6 +315,9 @@ function borrarEscenarioInterior() {
     $("#esc-luzTecho2").remove();
     $("#esc-luzTecho3").remove();
     $("#mesa-trabajo").remove();
+    if (document.getElementById("menu-musica") != null) {
+		document.getElementById("menu-musica").remove();
+	}
 }
 
 // Funcion que borra el escenario de fuera de la oficina
@@ -329,6 +332,9 @@ function borrarEscenarioExterior() {
     while (techo.firstChild) {
         techo.removeChild(techo.lastChild);
     }
+    if (document.getElementById("menu-musica") != null) {
+		document.getElementById("menu-musica").remove();
+	}
 }
 
 /* ---------------------------------------------------------------------------- */

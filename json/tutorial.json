@@ -9,7 +9,7 @@
 	{
 		"id": "controles",
 		"titulo": "Controles",
-		"descripcion": "\nMano derecha:\t  Agarrar y soltar componentes. \t\t\t\t\t\t\t\n\nMano izquierda:\tHacer click en botones (usando el gatillo). \t\t\nMano izquierda:\tDescolocar componentes (usando el gatillo).  \nMano izquierda:\tCentrar cámara (usando el botón X). \t  \t\t\t",
+		"descripcion": "\nMano derecha:\t  Agarrar y soltar componentes. \t\t\t\t\t\t\t\n\nMano izquierda:\tDescolocar componentes (usando el gatillo).  \nMano izquierda:\tCentrar cámara (usando el botón X). \t  \t\t\t\nMano izquierda:\tControl de volumen  (usando el botón Y).  \t\t",
 		"boton": "Continuar",
 		"onclick": "cargarInstruccion(2)"
 	},
