@@ -183,6 +183,10 @@ function peticionInstruccionesJSON() {
 		var plano1 = document.createElement("a-rounded");
 		setAttributes(plano1, { id: "plano-instrucciones", position: "-0.23 1 1.3", rotation: "0 180 0" });
 		setAttributes(plano1, { width: "1.82", height: "1.02", radius: "0.04", color: "black", class: "raycastable" });
+		var hitbox = document.createElement("a-box");
+		setAttributes(hitbox, { position: "0 0 -0.01", width: "1.8", height: "1", depth: "0.001" });
+		hitbox.setAttribute("static-body", "shape: box;");
+		plano1.appendChild(hitbox);
 		var plano2 = document.createElement("a-rounded");
 		setAttributes(plano2, { id: "instruccion", position: "0 0 0.002", width: "1.8", height: "1" });
 		setAttributes(plano2, { radius: "0.04", color: "#e6ffe8" });
@@ -203,6 +207,10 @@ function crearAvisoControles() {
 	var p1 = document.createElement("a-rounded");
 	setAttributes(p1, { id: "plano-controles", position: "0 0 0.7" });
 	setAttributes(p1, { width: "1.12", height: "0.72", radius: "0.04", color: "black", class: "raycastable" });
+	var hitbox = document.createElement("a-box");
+	setAttributes(hitbox, { position: "0 0 -0.01", width: "1.1", height: "0.7", depth: "0.001" });
+	hitbox.setAttribute("static-body", "shape: box;");
+	p1.appendChild(hitbox);
 	var p2 = document.createElement("a-rounded");
 	setAttributes(p2, { position: "0 0 0.002", width: "1.1", height: "0.7" });
 	setAttributes(p2, { radius: "0.04", color: "#ffddde" });

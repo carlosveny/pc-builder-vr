@@ -199,6 +199,7 @@ function crearMenuComponentes() {
 	var display;
 	if (!existe) {
 		plano = crearPlanoTexto(1.3, 1.5, "1.8 1 -0.8", "0 -90 0", "plano-oficina", "1 3");
+		plano.setAttribute("static-body", "shape: box;");
 		display = document.createElement("a-entity");
 		display.setAttribute("id", "display-oficina");
 	}

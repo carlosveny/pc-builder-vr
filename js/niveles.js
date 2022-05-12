@@ -26,6 +26,10 @@ function crearMenuTareas() {
     var plano1 = document.createElement("a-rounded");
     setAttributes(plano1, { id: "plano-tareas", position: "-2.3 0.8 -0.8", rotation: "0 90 0" });
     setAttributes(plano1, { width: "1.27", height: "1.12", radius: "0.04", color: "black", class: "raycastable" });
+    var hitbox = document.createElement("a-box");
+    setAttributes(hitbox, {position: "0 0 -0.01", width: "1.25", height: "1.1", depth: "0.001"});
+    hitbox.setAttribute("static-body", "shape: box;");
+    plano1.appendChild(hitbox);
     var plano2 = document.createElement("a-rounded");
     setAttributes(plano2, { position: "0 0 0.002", width: "1.25", height: "1.1" });
     setAttributes(plano2, { radius: "0.04", color: "white" });

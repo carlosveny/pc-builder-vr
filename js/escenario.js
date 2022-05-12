@@ -140,6 +140,17 @@ function crearEscenarioInterior() {
     var dropzones = document.createElement("a-entity");
     setAttributes(dropzones, { id: "drop-zones", position: "-0.25 0.05 0" });
 
+    // Static bodies (si esta en VR)
+    if (kbRaycaster != "#cursor") {
+        o1.setAttribute("static-body", "shape: box;");
+        o2.setAttribute("static-body", "shape: box;");
+        o3.setAttribute("static-body", "shape: box;");
+        o4.setAttribute("static-body", "shape: box;");
+        o5.setAttribute("static-body", "shape: box;");
+        o6.setAttribute("static-body", "shape: box;");
+        o7.setAttribute("static-body", "shape: box;");
+    }
+
     // Appends
     var interior = document.getElementById("oficina-interior");
     ordenador.appendChild(o1);
