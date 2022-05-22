@@ -12,7 +12,7 @@ AFRAME.registerComponent('hc-sound', {
 		this.el.addEventListener('click', function (evt) {
 			document.querySelector("#click-sound").play();
 			var musica = document.querySelector("#background-music");
-			if (musica.paused) musica.play();
+			if (musica.paused && volumenMusica > 0.005) musica.play();
 		});
 	}
 });

@@ -143,7 +143,7 @@ switch ($_GET["tabla"]) {
     case "estadisticas":
         // Estadisticas
         $sql = "SELECT userEstadistica, usuarioRegistrado, nomPrueba, "
-            . "date_format(fecha, '%d/%m/%Y'), tiempo, puntuacion, idEstadistica, username "
+            . "date_format(fecha, '%Y/%m/%d'), tiempo, puntuacion, idEstadistica, username "
             . "FROM estadistica INNER JOIN  prueba WHERE estadistica.idPrueba = "
             . "prueba.idPrueba";
         $query = mysqli_query($db, $sql);

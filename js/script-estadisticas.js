@@ -9,6 +9,7 @@ var estadisticas; // objeto que contiene todas las estadisticas
 var tabla = null;
 var fPrueba = "null"; // para los filtros
 var fUsuario = "null"; // para los filtros
+var estPerPage = 5; // cantidad de estadisticas por pagina
 
 // Funcion que se ejecuta cuando se carga la pagina
 function loaded() {
@@ -117,6 +118,12 @@ function actualizarTabla(tipo, valor) {
     });
 
     $('.dataTables_length').addClass('bs-select');
+
+    // Actualizar variable de longitud por pagina
+    tabla.on('length.dt', function () {
+        estPerPage = tabla.page.info().length;
+    });
+    tabla.page.len(estPerPage).draw();
 
     // Actualizar id (#) cada vez que se modifica la tabla
     tabla.on('order.dt search.dt', function () {
