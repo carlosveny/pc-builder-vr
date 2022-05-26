@@ -13,5 +13,5 @@ También se puede jugar en el navegador integrado de ciertos dispositivos de Rea
 
 ## Información extra
 El juego usa el framework [A-Frame](https://aframe.io/) y ha sido desarrollado sobre entornos web por lo que se ha usado HTML, CSS y JavaScript para el front-end.  
-En el caso del back-end se ha usado PHP para comunicarse con la Base de Datos en PHPMyAdmin.  
+En el caso del back-end se ha usado PHP para comunicarse con la Base de Datos de MySQL.  
 También se han usado librerias auxiliares como JQuery o Bootstrap para facilitar la tarea de programación.
