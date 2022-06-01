@@ -8,7 +8,7 @@ Es necesario jugar con un dispositivo de Realidad Virtual que tenga 6DoF (grados
 También se puede jugar en el navegador integrado de ciertos dispositivos de Realidad Virtual, como el Oculus Browser, aunque el rendimiento puede ser ligeramente inferior.  
 **Link:** https://alumnes-ltim.uib.es/pcbuilding/  
 
-![imagen](assets/demo.jpg)
+![imagen](assets/demo2.jpg)
 
 
 ## Información extra
