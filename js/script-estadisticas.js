@@ -190,10 +190,12 @@ function cargarDropdownColumnas() {
 
 // Funcion que carga el grafico de las visitas
 function cargarGrafico() {
-    var random = Math.floor(Math.random() * 1000);
-    Highcharts.getJSON(
-        'json/visitas_contador.json?'+random,
-        function (data) {
+    $.post("php/visitas.php", {
+        tipo: "actualizar"
+    })
+        .done(function (data) {
+            data = JSON.parse(data);
+            console.log(data);
             Highcharts.chart('grafico-visitas', {
                 chart: {
                     zoomType: 'x',
@@ -250,23 +252,25 @@ function cargarGrafico() {
                     type: 'area',
                     name: 'Visitas',
                     data: data
-                }]
+                }],
+                credits: {
+                    enabled: false
+                }
             });
-        }
-    );
+        });
 }
 
 // Funcion que carga el mapa con la localizacion de las visitas
 function cargarMapa() {
     var random = Math.floor(Math.random() * 1000);
-    $.getJSON('json/visitas_mapa.json?'+random, function (paises) {
+    $.getJSON('json/visitas_mapa.json?' + random, function (paises) {
         // Obtener el valor maximo de visitas
         var valores = [];
-        for (var i=0; i<paises.length; i++) {
+        for (var i = 0; i < paises.length; i++) {
             valores.push(paises[i][1]);
         }
         var maximo = Math.max(...valores);
-        
+
         // Dibujar mapa
         Highcharts.mapChart('mapa-visitas', {
             chart: {
