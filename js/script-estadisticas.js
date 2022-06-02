@@ -266,7 +266,6 @@ function cargarMapa() {
             valores.push(paises[i][1]);
         }
         var maximo = Math.max(...valores);
-        console.log(maximo);
         
         // Dibujar mapa
         Highcharts.mapChart('mapa-visitas', {
