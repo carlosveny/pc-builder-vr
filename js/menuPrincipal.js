@@ -191,6 +191,7 @@ function peticionPruebas() {
 			else {
 				pruebas = JSON.parse(data);
 				peticionComponentes();
+				peticionVisitas();
 			}
 		});
 }
@@ -283,6 +284,29 @@ function peticionCerrarSesion() {
 			if (pantallaEditarPerfil) mostrarEditarPerfil();
 			else if (pantallaRegistrarse) mostrarRegistrarse();
 		});
+}
+
+// Funcion que actualiza las visitas del dia y de los paises
+function peticionVisitas() {
+	if (location.hostname == "localhost") return;
+
+	// Actualizar contador visitas
+	$.post("php/visitas.php", {
+		tipo: "contador"
+	})
+		.done(function (data) {});
+
+	// Actualizar mapa visitas
+	$.getJSON('https://ipinfo.io?token=49260118e89ebb', function (data) {
+		console.log("Código de país: " + data.country);
+		$.post("php/visitas.php", {
+			tipo: "pais",
+			pais: data.country.toLowerCase()
+		})
+			.done(function (data) {
+				console.log(data);
+			});
+	});
 }
 
 /* ---------------------------------------------------------------------------- */
@@ -513,13 +537,13 @@ function menuMusica(porcentaje) {
 	}
 
 	// Coordenadas mundo de la camara
-    var cameraEl = document.querySelector('#tracker-cam');
-    var cameraPos = new THREE.Vector3();
-    cameraPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+	var cameraEl = document.querySelector('#tracker-cam');
+	var cameraPos = new THREE.Vector3();
+	cameraPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
 
 	// Entidad y texto
 	var entidad = document.createElement("a-entity");
-	setAttributes(entidad, {id: "menu-musica", "position": cameraPos, "scale": "0.8 0.8 0.8"});
+	setAttributes(entidad, { id: "menu-musica", "position": cameraPos, "scale": "0.8 0.8 0.8" });
 	entidad.setAttribute("look-at", "#camara");
 	var texto = document.createElement("a-text");
 	setAttributes(texto, { position: "0 0.2 0", rotation: "0 0 0", value: "Música" });
@@ -534,7 +558,7 @@ function menuMusica(porcentaje) {
 	// Contenedor
 	var cont = document.createElement("a-gui-flex-container");
 	setAttributes(cont, { id: "gui-container", opacity: "0.95", width: "1.6", height: "0.6" });
-	setAttributes(cont, { position: "0 0 0", rotation: "0 0 0", class:"raycastable" });
+	setAttributes(cont, { position: "0 0 0", rotation: "0 0 0", class: "raycastable" });
 	cont.setAttribute("flex-direction", "column");
 	cont.setAttribute("justify-content", "flexEnd");
 	cont.setAttribute("align-items", "normal");

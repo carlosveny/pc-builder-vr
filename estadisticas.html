@@ -32,6 +32,13 @@
     <script src="https://kit.fontawesome.com/478692bc13.js" crossorigin="anonymous"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"
         type='text/css'>
+    <!-- Highcharts y Highmaps -->
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
     <!-- Local -->
     <link rel="stylesheet" href="css/estilo.css">
     <script src="js/script-estadisticas.js"></script>
@@ -98,13 +105,28 @@
         </div>
         <!-- Fin Filtros -->
 
-        <!-- Tabla de estadisticas -->
+        <!-- Inicio Tabla de estadisticas -->
         <div id="contenedor-estadisticas" class="table-responsive mt-5">
             <table id="tabla" class="table w-100 bg-body">
                 <thead></thead>
                 <tbody id="tabla-cuerpo"></tbody>
             </table>
         </div>
+        <!-- Fin Tabla de estadisticas -->
+
+        <!-- Inicio Graficos -->
+        <h3 class="mt-5">Visitas</h3>
+        <hr>
+        <div class="row mt-2">
+            <div class="col-xl-6">
+                <div id="grafico-visitas"></div>
+            </div>
+            <div class="col-xl-6">
+                <div id="mapa-visitas"></div>
+            </div>
+        </div>
+        
+        <!-- Fin Graficos -->
     </div>
     <!-- Fin Contenedor -->
 

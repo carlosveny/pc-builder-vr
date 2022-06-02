@@ -15,6 +15,8 @@ var estPerPage = 5; // cantidad de estadisticas por pagina
 function loaded() {
     window.onresize = modificarDimensiones;
     peticionEstadisticas();
+    cargarGrafico();
+    cargarMapa();
 }
 
 // Funcion que hace la tabla mas pequeña o mas grande segun la pantalla
@@ -166,11 +168,11 @@ function cargarDropdownColumnas() {
 
     $('#filtros-columnas').multiSelect({
         'noneText': 'Seleccionar ',
-	    'allText': 'Todas'
+        'allText': 'Todas'
     });
 
     // Eventos al hacer click
-    $('#filtros-columnas').change(function(){
+    $('#filtros-columnas').change(function () {
         // Desmarcar todo
         tabla.column(1).visible(false);
         tabla.column(2).visible(false);
@@ -179,10 +181,142 @@ function cargarDropdownColumnas() {
         tabla.column(5).visible(false);
 
         var seleccionado = $(this).val();
-        for (var i=0; i<seleccionado.length; i++) {
+        for (var i = 0; i < seleccionado.length; i++) {
             tabla.column(seleccionado[i]).visible(true);
         }
         $(tabla).width("100%");
+    });
+}
+
+// Funcion que carga el grafico de las visitas
+function cargarGrafico() {
+    var random = Math.floor(Math.random() * 1000);
+    Highcharts.getJSON(
+        'json/visitas_contador.json?'+random,
+        function (data) {
+            Highcharts.chart('grafico-visitas', {
+                chart: {
+                    zoomType: 'x',
+                    backgroundColor: "#fdfdff"
+                },
+                title: {
+                    text: 'Visitas al juego durante el transcurso del tiempo'
+                },
+                subtitle: {
+                    text: document.ontouchstart === undefined ?
+                        'Haz click y arrastra en el gráfico para hacer zoom' : 'Usa los dedos para hacer zoom en el gráfico'
+                },
+                xAxis: {
+                    title: {
+                        text: 'Fecha'
+                    },
+                    type: 'datetime'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Número de visitas'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                plotOptions: {
+                    area: {
+                        fillColor: {
+                            linearGradient: {
+                                x1: 0,
+                                y1: 0,
+                                x2: 0,
+                                y2: 1
+                            },
+                            stops: [
+                                [0, Highcharts.getOptions().colors[2]],
+                                [1, Highcharts.color(Highcharts.getOptions().colors[2]).setOpacity(0).get('rgba')]
+                            ]
+                        },
+                        marker: {
+                            radius: 2
+                        },
+                        lineWidth: 1,
+                        states: {
+                            hover: {
+                                lineWidth: 1
+                            }
+                        },
+                        threshold: null
+                    }
+                },
+                series: [{
+                    type: 'area',
+                    name: 'Visitas',
+                    data: data
+                }]
+            });
+        }
+    );
+}
+
+// Funcion que carga el mapa con la localizacion de las visitas
+function cargarMapa() {
+    var random = Math.floor(Math.random() * 1000);
+    $.getJSON('json/visitas_mapa.json?'+random, function (paises) {
+        // Obtener el valor maximo de visitas
+        var valores = [];
+        for (var i=0; i<paises.length; i++) {
+            valores.push(paises[i][1]);
+        }
+        var maximo = Math.max(...valores);
+        console.log(maximo);
+        
+        // Dibujar mapa
+        Highcharts.mapChart('mapa-visitas', {
+            chart: {
+                map: 'custom/world',
+                backgroundColor: "#fdfdff"
+            },
+            title: {
+                text: 'Visitas al juego por países'
+            },
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+            tooltip: {
+                pointFormat: '{point.name}: <b>{point.value}</b>'
+            },
+            colorAxis: {
+                min: 0,
+                max: maximo,
+                minColor: '#ffffff',
+                maxColor: '#1686cc'
+            },
+            series: [{
+                data: paises,
+                name: 'Visitas',
+                states: {
+                    hover: {
+                        color: '#ffd689'
+                    }
+                }
+            }],
+            legend: {
+                title: {
+                    text: 'Número de visitas',
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            accessibility: {
+                description: 'Mapa que muestra la cantidad de visitas al juego según el país',
+                rangeDescription: 'Rango: 0 a 100 visitas',
+                point: {
+                    valueSuffix: '€'
+                }
+            }
+        });
     });
 }
 
