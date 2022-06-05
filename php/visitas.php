@@ -14,8 +14,11 @@ if ($_POST["tipo"] == "contador") {
 
 // Actualizar Contador (al abrir estadisticas.html)
 if ($_POST["tipo"] == "actualizar") {
+
     $json_contador = json_decode(file_get_contents("../json/visitas_contador.json"));
-    $json_contador = actualizarContador($json_contador);
+    if ($_POST["commit"] == "true") {
+        $json_contador = actualizarContador($json_contador);
+    }
 
     file_put_contents("../json/visitas_contador.json", json_encode($json_contador));
     echo json_encode($json_contador);

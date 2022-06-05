@@ -190,8 +190,12 @@ function cargarDropdownColumnas() {
 
 // Funcion que carga el grafico de las visitas
 function cargarGrafico() {
+    var cmt = "true";
+    if (location.hostname == "localhost") cmt = "false";
+
     $.post("php/visitas.php", {
-        tipo: "actualizar"
+        tipo: "actualizar",
+        commit: cmt
     })
         .done(function (data) {
             data = JSON.parse(data);
@@ -293,7 +297,7 @@ function cargarMapa() {
                 min: 0,
                 max: maximo,
                 minColor: '#ffffff',
-                maxColor: '#1686cc'
+                maxColor: '#fcb103'
             },
             series: [{
                 data: paises,
