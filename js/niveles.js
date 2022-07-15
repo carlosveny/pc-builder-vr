@@ -450,6 +450,7 @@ function peticionInsertarEstadistica(datos) {
                 alert(descr);
             }
             else {
+                console.log(data);
                 estadisticas = JSON.parse(data); // actualizar variable
             }
         });

@@ -163,7 +163,7 @@ switch ($_POST["tabla"]) {
         $sql = "SELECT username, nomPrueba, date_format(fecha, '%d/%m/%Y'), "
             . "tiempo, puntuacion, idEstadistica FROM estadistica INNER JOIN "
             . "prueba WHERE estadistica.idPrueba = prueba.idPrueba AND "
-            . "username = " . $_POST["datos"][4] . " ORDER BY idEstadistica DESC";
+            . "username = " . $_POST["datos"][4] . " ORDER BY LENGTH(idEstadistica) DESC, idEstadistica DESC";
         $query = mysqli_query($db, $sql);
         $estadisticas = mysqli_fetch_all($query, MYSQLI_NUM);
 
@@ -279,7 +279,7 @@ function generarIDPieza($db, $tipo)
     $id = ["idPlacaBase", "idCPU", "idVentilador", "idRAM", "idDisco", "idFuente", "idGPU"];
     $replace = "cmp-" . $type[$tipo] . "-";
 
-    $sql = "SELECT * FROM " . $type[$tipo] . " ORDER BY " . $id[$tipo] . " DESC LIMIT 1";
+    $sql = "SELECT * FROM " . $type[$tipo] . " ORDER BY LENGTH(" . $id[$tipo] . ") DESC, " . $id[$tipo] . " DESC LIMIT 1";
     $query = mysqli_query($db, $sql);
     $result = mysqli_fetch_all($query, MYSQLI_NUM);
     $nuevoID = (intval(str_replace($replace, "", $result[0][0]))) + 1;
@@ -289,7 +289,7 @@ function generarIDPieza($db, $tipo)
 // Funcion que genera un identificador para las pruebas nuevas
 function generarIDPrueba($db)
 {
-    $query = mysqli_query($db, "SELECT * FROM prueba ORDER BY idPrueba DESC LIMIT 1");
+    $query = mysqli_query($db, "SELECT * FROM prueba ORDER BY LENGTH(idPrueba) DESC, idPrueba DESC LIMIT 1");
     $result = mysqli_fetch_all($query, MYSQLI_NUM);
     $nuevoID = (intval(str_replace("prueba-", "", $result[0][0]))) + 1;
     return "prueba-" . $nuevoID;
@@ -298,7 +298,7 @@ function generarIDPrueba($db)
 // Funcion que genera un identificador para las estadisticas nuevas
 function generarIDEstadistica($db)
 {
-    $query = mysqli_query($db, "SELECT * FROM estadistica ORDER BY idEstadistica DESC LIMIT 1");
+    $query = mysqli_query($db, "SELECT * FROM estadistica ORDER BY LENGTH(idEstadistica) DESC, idEstadistica DESC LIMIT 1");
     $result = mysqli_fetch_all($query, MYSQLI_NUM);
     $nuevoID = (intval(str_replace("estadistica-", "", $result[0][0]))) + 1;
     return "estadistica-" . $nuevoID;
